@@ -1,9 +1,15 @@
-import React from 'react'
-import { Actions, Scene } from 'react-native-router-flux'
+import React, { Component } from 'react'
+import { Scene, Router } from 'react-native-router-flux'
 import Login from './auth/Login'
 
-export default Actions.create(
-  <Scene key='root'>
-    <Scene key='login' component={Login} title='Login' />
-  </Scene>
-)
+export default class AppRouter extends Component {
+  render() {
+    return (
+      <Router>
+        <Scene key='root'>
+          <Scene key='login' component={Login} title='Login' />
+        </Scene>
+      </Router>
+    )
+  }
+}
