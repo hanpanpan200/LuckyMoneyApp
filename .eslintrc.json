@@ -7,7 +7,8 @@
     "parserOptions": {
         "ecmaFeatures": {
             "experimentalObjectRestSpread": true,
-            "jsx": true
+            "jsx": true,
+            "arrowFunctions": true
         },
         "sourceType": "module"
     },
@@ -15,7 +16,9 @@
         "react",
         "react-native"
     ],
+    "parser": "babel-eslint",    
     "rules": {
+        "strict": 0,
         "indent": [
             "error",
             2
@@ -35,7 +38,7 @@
         "react-native/no-unused-styles": 2,
         "react-native/split-platform-components": 2,
         "react-native/no-inline-styles": 2,
-        "react-native/no-color-literals": 2,
+        // "react-native/no-color-literals": 2,
         "react/jsx-uses-react": "error",
         "react/jsx-uses-vars": "error"
     },

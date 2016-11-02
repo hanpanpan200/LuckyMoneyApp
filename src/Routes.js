@@ -7,7 +7,7 @@ export default class AppRouter extends Component {
     return (
       <Router>
         <Scene key='root'>
-          <Scene key='login' component={Login} title='Login' />
+          <Scene key='login' component={Login} title='Login' hideNavBar/>
         </Scene>
       </Router>
     )
