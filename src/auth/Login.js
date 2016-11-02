@@ -1,13 +1,32 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import {
   View,
   TextInput,
   StyleSheet,
 } from 'react-native'
 import Button from 'react-native-button'
+import { alert } from '../utils/helpers'
 
 export default class Login extends Component {
+  static propTypes = {
+    login: PropTypes.func.isRequired,
+    isLoading: PropTypes.bool.isRequired,
+    errorMessage: PropTypes.string,
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.errorMessage) {
+      alert(nextProps.errorMessage)
+    }
+  }
+
   login = () => {
+    const username = this.refs.inputUserName._lastNativeText
+    const password = this.refs.inputPassword._lastNativeText
+    this.props.login({
+      username: username,
+      password: password,
+    })
   }
 
   render() {
@@ -15,11 +34,15 @@ export default class Login extends Component {
       <View style={styles.container}>
         <View style={styles.textContainer}>
           <TextInput 
+            ref='inputUserName'
+            autoCapitalize='none'    
             placeholder='User name' 
             placeholderTextColor='#928d84' 
-            style={styles.input} 
+            style={styles.input}
           />
           <TextInput 
+            ref='inputPassword'
+            autoCapitalize='none'    
             placeholder='Password' 
             placeholderTextColor='#928d84' 
             secureTextEntry={true} 
