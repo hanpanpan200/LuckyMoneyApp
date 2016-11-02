@@ -14,8 +14,17 @@ export default class Login extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.textContainer}>
-          <TextInput placeholder='User name' placeholderTextColor='#928d84' style={styles.input} />
-          <TextInput placeholder='Password' placeholderTextColor='#928d84' style={styles.input} />
+          <TextInput 
+            placeholder='User name' 
+            placeholderTextColor='#928d84' 
+            style={styles.input} 
+          />
+          <TextInput 
+            placeholder='Password' 
+            placeholderTextColor='#928d84' 
+            secureTextEntry={true} 
+            style={styles.input} 
+          />
           <Button style={styles.button} onPress={this.login}>Login</Button>
         </View>
       </View>
@@ -46,6 +55,7 @@ const styles = StyleSheet.create({
   button: {
     height: 30,
     fontSize: 20,
+    fontWeight: '300',
     color: 'white',
     backgroundColor: '#928d84',
   },
