@@ -1,3 +1,5 @@
+import { Actions } from 'react-native-router-flux'
+
 import api from '../api/api'
 import { AsyncStorage } from 'react-native'
 import { STORAGE_SESSION_KEY } from '../constants/StorageKeys'
@@ -35,6 +37,7 @@ async function saveUserInfo(userInfo, dispatch) {
   await AsyncStorage.setItem(STORAGE_SESSION_KEY, JSON.stringify(userInfo.sessionToken))
   delete userInfo.sessionToken
   dispatch(loginSuccess(userInfo))
+  Actions.events()
 }
 
 function loginSuccess(userInfo) {

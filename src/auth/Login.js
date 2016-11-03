@@ -3,8 +3,12 @@ import {
   View,
   TextInput,
   StyleSheet,
+  AsyncStorage,
 } from 'react-native'
 import Button from 'react-native-button'
+import { Actions } from 'react-native-router-flux'
+
+import { STORAGE_SESSION_KEY } from '../constants/StorageKeys'
 import { alert } from '../utils/helpers'
 
 export default class Login extends Component {
@@ -14,8 +18,16 @@ export default class Login extends Component {
     errorMessage: PropTypes.string,
   }
 
+  componentWillMount() {
+    AsyncStorage.getItem(STORAGE_SESSION_KEY).then((result) => {
+      if (result) {
+        Actions.events()
+      }
+    })
+  }
+
   componentWillReceiveProps(nextProps) {
-    if (nextProps.errorMessage) {
+    if (!this.props.errorMessage && nextProps.errorMessage) {
       alert(nextProps.errorMessage)
     }
   }
