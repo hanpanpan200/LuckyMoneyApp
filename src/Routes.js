@@ -9,8 +9,8 @@ export default class AppRouter extends Component {
     return (
       <Router>
         <Scene key='root'>
-          <Scene key='login' component={LoginContainer} title='Login' hideNavBar/>
-          <Scene key='events' component={EventListContainer} title='Events' hideNavBar={false} initial={true}/>
+          <Scene key='login' component={LoginContainer} title='Login' hideNavBar />
+          <Scene key='events' component={EventListContainer} title='Events' hideNavBar={false} />
         </Scene>
       </Router>
     )

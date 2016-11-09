@@ -1,11 +1,13 @@
 import React, { Component, PropTypes } from 'react'
 import {
   View,
+  Text,
   TextInput,
   StyleSheet,
   AsyncStorage,
+  Image,
+  TouchableOpacity,
 } from 'react-native'
-import Button from 'react-native-button'
 import { Actions } from 'react-native-router-flux'
 
 import { STORAGE_SESSION_KEY } from '../constants/StorageKeys'
@@ -44,24 +46,33 @@ export default class Login extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.textContainer}>
-          <TextInput 
-            ref='inputUserName'
-            autoCapitalize='none'    
-            placeholder='User name' 
-            placeholderTextColor='#928d84' 
-            style={styles.input}
-          />
-          <TextInput 
-            ref='inputPassword'
-            autoCapitalize='none'    
-            placeholder='Password' 
-            placeholderTextColor='#928d84' 
-            secureTextEntry={true} 
-            style={styles.input} 
-          />
-          <Button style={styles.button} onPress={this.login}>Login</Button>
-        </View>
+      <Image
+        source={require('../image/background.png')}
+        resizeMode={Image.resizeMode.center} 
+        style={styles.image}  
+      >
+      <Text style={styles.logo}>Lucky Money</Text>
+      <View style={styles.textContainer}>
+        <TextInput 
+          ref='inputUserName'
+          autoCapitalize='none'    
+          placeholder='User name' 
+          placeholderTextColor='gray' 
+          style={styles.input}
+        />
+        <TextInput 
+          ref='inputPassword'
+          autoCapitalize='none'    
+          placeholder='Password' 
+          placeholderTextColor='gray' 
+          secureTextEntry={true} 
+          style={styles.input} 
+        />
+        <TouchableOpacity onPress={this.login} style={styles.button}>
+          <Text style={styles.buttonText}>Sign in</Text>
+        </TouchableOpacity>
+      </View>
+      </Image>
       </View>
     )
   }
@@ -71,27 +82,43 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'row',
-    backgroundColor: '#82d4aa',
+    alignItems: 'center',
     justifyContent: 'center',
-    alignItems: 'flex-end',
   },
-  textContainer: {
+  image: {
     flex: 1,
     flexDirection: 'column',
-    height: 120,
     padding: 16,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  logo: {
+    backgroundColor: 'transparent',
+    fontSize: 30,
+    color: 'white',
+    marginBottom: 100,
+  },
+  textContainer: {
+    width: 350,
+    height: 120,
+    marginLeft: 16,
+    marginRight: 16,
+    padding: 16,
+    backgroundColor: 'rgba(3,3,3,0.3)',
   },
   input: {
-    flex: 1,
-    height: 20,
+    width: 200,
+    height: 40,
     marginBottom: 5,
     color: 'white',
   },
   button: {
-    height: 30,
-    fontSize: 20,
+    height: 40,
+    marginTop: 30,    
+  },
+  buttonText: {
+    fontSize: 18,
     fontWeight: '300',
     color: 'white',
-    backgroundColor: '#928d84',
   },
 })
