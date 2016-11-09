@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import {
   ListView,
+  StyleSheet,
 } from 'react-native'
 
 import Event from './Event'
@@ -29,13 +30,24 @@ export default class EventList extends Component {
     }
   }
 
+  renderRow = (rowData) => {
+    return <Event event={rowData} />
+  } 
+
   render() {
     return (
       <ListView
+        style={styles.list}
         dataSource={this.state.dataSource}
-        renderRow={(rowData) => {<Event event={rowData} />}}
+        renderRow={this.renderRow}
         enableEmptySections={true}
       />
     )
   }
 }
+
+const styles = StyleSheet.create({
+  list: {
+    padding: 16,
+  },
+})
