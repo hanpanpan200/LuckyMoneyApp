@@ -6,7 +6,7 @@ import {
   StyleSheet,
   AsyncStorage,
   Image,
-  TouchableOpacity,
+  TouchableHighlight,
 } from 'react-native'
 import { Actions } from 'react-native-router-flux'
 
@@ -68,10 +68,10 @@ export default class Login extends Component {
           secureTextEntry={true} 
           style={styles.input} 
         />
-        <TouchableOpacity onPress={this.login} style={styles.button}>
-          <Text style={styles.buttonText}>Sign in</Text>
-        </TouchableOpacity>
       </View>
+      <TouchableHighlight onPress={this.login} style={styles.buttonContainer}>
+          <Text style={styles.buttonText}>Sign in</Text>
+        </TouchableHighlight>
       </Image>
       </View>
     )
@@ -95,8 +95,9 @@ const styles = StyleSheet.create({
   logo: {
     backgroundColor: 'transparent',
     fontSize: 30,
-    color: 'white',
-    marginBottom: 100,
+    fontWeight: 'bold',
+    color: 'rgb(212,55,43)',
+    marginBottom: 80,
   },
   textContainer: {
     width: 350,
@@ -107,18 +108,24 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(3,3,3,0.3)',
   },
   input: {
-    width: 200,
+    flex: 1,
     height: 40,
     marginBottom: 5,
     color: 'white',
   },
-  button: {
+  buttonContainer: {
     height: 40,
-    marginTop: 30,    
+    width: 150,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 30,  
+    borderRadius: 20,
+    backgroundColor: 'rgb(200, 50, 50)',
+    padding: 10,      
   },
   buttonText: {
     fontSize: 18,
-    fontWeight: '300',
+    fontWeight: '400',
     color: 'white',
   },
 })
