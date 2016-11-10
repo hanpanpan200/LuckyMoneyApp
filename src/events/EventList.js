@@ -49,5 +49,7 @@ export default class EventList extends Component {
 const styles = StyleSheet.create({
   list: {
     padding: 16,
+    marginTop: 64,
+    backgroundColor: '#fbdede',
   },
 })
