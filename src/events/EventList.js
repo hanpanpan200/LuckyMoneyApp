@@ -1,8 +1,11 @@
 import React, { Component, PropTypes } from 'react'
 import {
+  View,
   ListView,
   StyleSheet,
+  TouchableOpacity,
 } from 'react-native'
+import Icon from 'react-native-vector-icons/FontAwesome'
 
 import Event from './Event'
 
@@ -34,22 +37,37 @@ export default class EventList extends Component {
     return <Event event={rowData} />
   } 
 
+  createEvent() {
+    
+  }
+
   render() {
     return (
-      <ListView
-        style={styles.list}
-        dataSource={this.state.dataSource}
-        renderRow={this.renderRow}
-        enableEmptySections={true}
-      />
+      <View style={styles.container}>
+        <ListView
+          style={styles.list}
+          dataSource={this.state.dataSource}
+          renderRow={this.renderRow}
+          enableEmptySections={true}
+        />
+        <TouchableOpacity onPress={this.creteEvent}>
+          <Icon name='plus-circle' size={40} color='#ec4d50' style={styles.addIcon}/>
+        </TouchableOpacity>
+      </View>
     )
   }
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fbdede',
+  },
   list: {
     padding: 16,
     marginTop: 64,
-    backgroundColor: '#fbdede',
+  },
+  addIcon: {
+    margin: 10,
   },
 })

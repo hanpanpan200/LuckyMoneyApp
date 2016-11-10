@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import { Scene, Router } from 'react-native-router-flux'
-import { StyleSheet } from 'react-native'
+import { 
+  TouchableOpacity,
+  StyleSheet 
+} from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
 
 import LoginContainer from './auth/LoginContainer'
@@ -11,6 +14,18 @@ export default class AppRouter extends Component {
     return (
       <Icon name='angle-down' size={30} color='white' />
     )
+  } 
+
+  renderSettings() {
+    return (
+      <TouchableOpacity onPress={this.goSettings}>
+        <Icon name='bars' size={18} color='white' />
+      </TouchableOpacity>
+    )
+  }
+
+  goSettings = () => {
+    
   }
 
   render() {
@@ -24,6 +39,7 @@ export default class AppRouter extends Component {
             navigationBarStyle={styles.navBar} 
             titleStyle={styles.navTitle}
             hideBackImage={true}
+            renderRightButton={this.renderSettings}
             hideNavBar={false} />
         </Scene>
       </Router>
@@ -36,9 +52,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#ec4d50',
   },
   navTitle: {
-    color: 'white',
-  },
-  backText: {
     color: 'white',
   },
 })
