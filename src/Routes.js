@@ -8,6 +8,7 @@ import Icon from 'react-native-vector-icons/FontAwesome'
 
 import LoginContainer from './auth/LoginContainer'
 import EventListContainer from './events/EventListContainer'
+import EventNew from './events/EventNew'
 
 export default class AppRouter extends Component {
   renderBack() {
@@ -32,15 +33,28 @@ export default class AppRouter extends Component {
     return (
       <Router>
         <Scene key='root'>
-          <Scene key='login' component={LoginContainer} title='Login' hideNavBar />
-          <Scene key='events' 
+          <Scene 
+            key='login' 
+            title='Login'             
+            component={LoginContainer} 
+            hideNavBar={true}
+          />
+          <Scene 
+            key='events' 
             component={EventListContainer} 
             title='Events'
             navigationBarStyle={styles.navBar} 
             titleStyle={styles.navTitle}
             hideBackImage={true}
             renderRightButton={this.renderSettings}
-            hideNavBar={false} />
+            hideNavBar={false} 
+          />
+          <Scene 
+            key='eventNew' 
+            component={EventNew}
+            hideNavBar={true} 
+            initial={true}
+          />
         </Scene>
       </Router>
     )

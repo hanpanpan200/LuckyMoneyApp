@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
 } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
+import { Actions } from 'react-native-router-flux'
 
 import Event from './Event'
 
@@ -37,10 +38,6 @@ export default class EventList extends Component {
     return <Event event={rowData} />
   } 
 
-  createEvent() {
-    
-  }
-
   render() {
     return (
       <View style={styles.container}>
@@ -50,7 +47,10 @@ export default class EventList extends Component {
           renderRow={this.renderRow}
           enableEmptySections={true}
         />
-        <TouchableOpacity onPress={this.creteEvent}>
+        <TouchableOpacity 
+          onPress={() => { Actions.eventNew() }} 
+          style={styles.iconContainer}
+        >
           <Icon name='plus-circle' size={40} color='#ec4d50' style={styles.addIcon}/>
         </TouchableOpacity>
       </View>
@@ -69,5 +69,9 @@ const styles = StyleSheet.create({
   },
   addIcon: {
     margin: 10,
+  },
+  iconContainer: {
+    width: 60,
+    height: 60,
   },
 })
