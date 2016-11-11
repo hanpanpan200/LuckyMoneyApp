@@ -11,12 +11,6 @@ import EventListContainer from './events/EventListContainer'
 import EventNew from './events/EventNew'
 
 export default class AppRouter extends Component {
-  renderBack() {
-    return (
-      <Icon name='angle-down' size={30} color='white' />
-    )
-  }
-
   renderSettings() {
     return (
       <TouchableOpacity onPress={this.goSettings}>
@@ -52,8 +46,8 @@ export default class AppRouter extends Component {
           <Scene
             key='eventNew'
             component={EventNew}
-            renderBackButton={this.renderBack}
             hideNavBar={true}
+            initial={true}
           />
         </Scene>
       </Router>

@@ -5,6 +5,7 @@ import {
   TextInput,
   StyleSheet, 
 } from 'react-native'
+import Icon from 'react-native-vector-icons/FontAwesome'
 
 export default class EventNew extends Component {
   // static propTypes = {
@@ -18,7 +19,9 @@ export default class EventNew extends Component {
           source={require('../image/heroImage.png')}
           style={styles.image}
           resizeMode={Image.resizeMode.cover}
-        />
+        >
+          <Icon name='angle-down' size={35} color='white' style={styles.backButton}/>        
+        </Image>
         <View style={styles.content}>
           <View style={styles.inputContainer}>
             <TextInput 
@@ -65,6 +68,11 @@ const styles = StyleSheet.create({
   },
   image: {
     height: 300,
+  },
+  backButton: {
+    backgroundColor: 'transparent',
+    marginLeft: 10,
+    marginTop: 25,
   },
   content: {
     flex: 1,
