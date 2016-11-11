@@ -11,3 +11,8 @@ export function localDateTime(dateStr) {
   }
   return null
 }
+
+export function getValueByRef(scene, refName) {
+  if (!scene || !scene.refs || !refName) return null
+  return scene.refs[refName]._lastNativeText
+}
